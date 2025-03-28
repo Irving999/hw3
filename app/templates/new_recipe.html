@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>New Recipe</title>
+</head>
+<body>
+    <h2>Enter your New Recipe</h2>
+    <form action="" method="POST" novalidate>
+        {{form.hidden_tag()}}
+        <p> {{form.title.label}}</br>
+        {{form.title()}}</p>
+
+        <p>{{form.description.label}}</br>
+        <p>{{form.description()}}</p>
+
+        <p>{{form.ingredients.label}}</br>
+        <p>{{form.ingredients()}}</p>
+
+        <p>{{form.instructions.label}}</br>
+        <p>{{form.instructions()}}</p>
+
+        <p>{{form.submit()}}</p>
+    </form>
+</body>
+</html>
