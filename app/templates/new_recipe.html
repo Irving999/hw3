@@ -1,8 +1,6 @@
-<html>
-<head>
-    <title>New Recipe</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
     <h2>Enter your New Recipe</h2>
     <form action="" method="POST" novalidate>
         {{form.hidden_tag()}}
@@ -20,5 +18,4 @@
 
         <p>{{form.submit()}}</p>
     </form>
-</body>
-</html>
+{% endblock %}

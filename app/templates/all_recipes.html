@@ -1,15 +1,14 @@
-<html>
-<head>
-    <title>Recipes</title>
-</head>
-<body>
-    <body>
-        <h1>Hello, here are your recipes!</h1>
-        {% for recipe in recipes %}
-            <div>
-                <li>{{ recipe.title }}</li>
-            </div>
-        {% endfor %}
-        </body>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+    {% if recipes %}
+    <h1>Hello, here are your recipes!</h1>
+    {% for recipe in recipes %}
+        <div>
+            <li>{{ recipe.title }}</li>
+        </div>
+    {% endfor %}
+    {% else %}
+        <h1>Oh no! You have no recipes</h1>
+    {% endif %} 
+{% endblock %}

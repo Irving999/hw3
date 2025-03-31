@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Home</h1>
+    {% set has_recipes = False %}
+    {% for user in users %}
+        {% if user.recipes|length > 0 %}
+            {% set has_recipes = True %}
+            <h3>{{ user.username }}'s Recipes</h3>
+            <ul>
+                {% for recipe in user.recipes %}
+                    <li>{{ recipe.title }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+        {% if not has_recipes %}
+        <p>It's quiet, too quite...</p>
+    {% endif %}
+    {% endfor %}
+    
+    {% if not users %}
+        <p>It's quiet, too quite...</p>
+    {% endif %}
+{% endblock %}

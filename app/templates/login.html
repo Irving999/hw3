@@ -1,19 +1,45 @@
-<html>
-<head>
-    <title>New Recipe</title>
-</head>
-<body>
-    <h2>Enter your New Recipe</h2>
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Sign In</h1>
+    
+    <!-- Display register fields -->
     <form action="" method="POST" novalidate>
         {{form.hidden_tag()}}
-        <p> {{form.username.label}}</br>
-        {{form.username()}}</p>
 
-        <p>{{form.password.label}}</br>
-        <p>{{form.password()}}</p>
+        <p> 
+            {{ form.username.label }}
 
-        <p>{{form.submit()}}</p>
-        <p>{{form.remember_me()}}</p>
+            </br>
+            
+            {{ form.username() }}
+
+            {% for error in form.username.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            <br>
+                {{ form.password.label }}
+            </br>
+            {{ form.password() }}
+
+            {% for error in form.password.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.remember_me() }}
+            {{ form.remember_me.label }}
+        </p>
+        
+        <p>{{ form.submit() }}</p> 
+
+        <p>
+            <br>New User? </br>
+            <a href="{{ '/register' }}">Click to Register!</a>
+        </p>
     </form>
-</body>
-</html>
+{% endblock %}

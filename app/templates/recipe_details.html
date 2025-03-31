@@ -1,23 +1,18 @@
-<html>
-<head>
-    <title>Delicious</title>
-</head>
-<body>
-    <body>
-        <h1>Here Is Your Recipe! Enjoy!</h1>
-        <p><h3><b>What is it?</b></h3> 
-            <p>{{ recipe.title }}</p>
-        </p>
-        <p><h3><b>Description</b></h3> 
-            <p>{{ recipe.description }}</p>
-        </p>
-        <p><h3><b>Ingredients</b></h3> 
-            <p>{{ recipe.ingredients }}</p>
-        </p>
-        <p><h3><b>Instructions</b></h3>
-            <p>{{ recipe.instructions }}</p>
-        </p>
-        <p><b>Created:</b> {{ recipe.date_created }} </p>
-    </body>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Here Is Your Recipe! Enjoy!</h1>
+    <p><h3><b>What is it?</b></h3> 
+        <p>{{ recipe.title }}</p>
+    </p>
+    <p><h3><b>Description</b></h3> 
+        <p>{{ recipe.description }}</p>
+    </p>
+    <p><h3><b>Ingredients</b></h3> 
+        <p>{{ recipe.ingredients }}</p>
+    </p>
+    <p><h3><b>Instructions</b></h3>
+        <p>{{ recipe.instructions }}</p>
+    </p>
+    <p><b>Created:</b> {{ recipe.date_created }} </p>
+{% endblock %}
