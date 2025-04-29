@@ -1,18 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Here Is Your Recipe! Enjoy!</h1>
-    <p><h3><b>What is it?</b></h3> 
-        <p>{{ recipe.title }}</p>
+    <h1>Here Is The Recipe. Enjoy!</h1>
+    <p>
+        <h3>
+            <div style="text-align: center;">
+            {{ recipe.title }}
+            </div>
+        </h3> 
+        
     </p>
-    <p><h3><b>Description</b></h3> 
-        <p>{{ recipe.description }}</p>
+
+    <p>
+        <h3><b>Description</b></h3> 
+        {{ recipe.description }}
     </p>
-    <p><h3><b>Ingredients</b></h3> 
-        <p>{{ recipe.ingredients }}</p>
+
+    <p>
+        <h3><b>Ingredients</b></h3> 
+        {% for ingredient in recipe.ingredients.splitlines() %}
+            {% if ingredient.strip() %}  
+                <li> • {{ ingredient.strip() }}</li>
+            {% endif %}
+        {% endfor %}
     </p>
-    <p><h3><b>Instructions</b></h3>
-        <p>{{ recipe.instructions }}</p>
+
+    <p>
+        <h3><b>Instructions</b></h3>
+        {% for step in recipe.instructions.splitlines() %}
+        <li> {{ step }} </li>
+        {% endfor %}
     </p>
     <p><b>Created:</b> {{ recipe.date_created }} </p>
 {% endblock %}

@@ -1,27 +1,26 @@
 {% extends "base.html" %}
-
 {% block content %}
     <h1>Home</h1>
-    {% set has_recipes = False %}
-    {% for user in users %}
-        {% if user.recipes|length > 0 %}
-            {% set has_recipes = True %}
-            <h3>{{ user.username }}'s Recipes</h3>
-            <ul>
-                {% for recipe in user.recipes %}
-                    <li>{{ recipe.title }}</li>
-                {% endfor %}
-            </ul>
+    {% if users %}
+        {% set ns = namespace(has_recipes=False) %}
+        {% for user in users %}
+            {% if user.recipes and user.recipes|length > 0 %}
+                {% set ns.has_recipes = True %}
+                <h3>{{ user.username }}'s Recipes</h3>
+                <ul>
+                    {% for recipe in user.recipes %}
+                        <li>
+                            <a href="{{ url_for('show_recipe', integer=recipe.id) }}">{{ recipe.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endfor %}
+
+        {% if not ns.has_recipes %}
+            <p>There are currently no recipes</p>
         {% endif %}
-        
-        
-    {% endfor %}
-
-    {% if not has_recipes %}
-        <p>There are currently no recipes</p>
-    {% endif %}
-
-    {% if not users %}
-        <p>There are currently no recipes</p>
+    {% else %}
+        <p>There are currently no users with recipes</p>
     {% endif %}
 {% endblock %}

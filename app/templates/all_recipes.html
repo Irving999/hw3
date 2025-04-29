@@ -5,7 +5,11 @@
     <h1>Hello, here are your recipes!</h1>
     {% for recipe in recipes %}
         <div>
-            <li>{{ recipe.title }}</li>
+            <ul>
+                <li>
+                    <a href="{{ url_for('show_recipe', integer=recipe.id) }}">{{ recipe.title }}</a>
+                </li>
+            </ul>
         </div>
     {% endfor %}
     {% else %}
