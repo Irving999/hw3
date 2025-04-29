@@ -14,12 +14,14 @@
             </ul>
         {% endif %}
         
-        {% if not has_recipes %}
-        <p>It's quiet, too quite...</p>
-    {% endif %}
+        
     {% endfor %}
-    
+
+    {% if not has_recipes %}
+        <p>There are currently no recipes</p>
+    {% endif %}
+
     {% if not users %}
-        <p>It's quiet, too quite...</p>
+        <p>There are currently no recipes</p>
     {% endif %}
 {% endblock %}

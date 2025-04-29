@@ -33,6 +33,9 @@ def show_recipe(integer):
 @login_required
 def delete_recipe(integer):
     recipe = Recipe.query.get_or_404(integer)
+    if recipe.user_id != current_user.id:
+        flash('You can only delete your own recipes.')
+        return redirect(url_for('show_recipes'))
     db.session.delete(recipe)
     db.session.commit()
     return render_template("recipe_deleted.html")
